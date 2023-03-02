@@ -1,3 +1,4 @@
+name: "Flutter Pipeline"
 on:
   pull_request:
     branches:
@@ -5,7 +6,6 @@ on:
   push:
     branches:
       - main
-name: "Build App and Release for production"
 jobs:
   build:
     name: Build & Release
