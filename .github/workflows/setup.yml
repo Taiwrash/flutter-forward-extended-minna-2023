@@ -113,5 +113,6 @@ jobs:
     - name: Upload web artifact 
       uses: actions/upload-artifact@v3
       with:
+        baseHref: /flutter-forward-extended-minna-2023/
         name: release-web
         path: build/web/
