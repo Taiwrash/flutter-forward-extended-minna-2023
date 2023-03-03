@@ -18,7 +18,6 @@ env:
 
 jobs:
   code-analysis-and-testing:
-    if: false
     name: Code analysis and testing
     runs-on: ubuntu-latest
     timeout-minutes: 30
@@ -43,9 +42,8 @@ jobs:
 
 
   android:
-    if: false
     name: Android CI/CD
-    needs: code-analysis-and-testing
+    needs: [code-analysis-and-testing]
     runs-on: ubuntu-latest
     timeout-minutes: 30
     steps:
@@ -69,7 +67,7 @@ jobs:
       uses: subosito/flutter-action@v2
       with:
         channel: ${{ env.FLUTTER_CHANNEL }}
-        # flutter-version: ${{ env.FLUTTER_VERSION }} # you can also specify exact version of flutter
+        flutter-version: ${{ env.FLUTTER_VERSION }} # you can also specify exact version of flutter
     
     - name: Flutter doctor
       run: flutter doctor # this is an optional step and can be removed
@@ -92,7 +90,6 @@ jobs:
 #         fastlane supply --aab ${{ env.PATH_TO_AAB }} --json_key_data '${{ secrets.ANDROID_SERVICE_ACCOUNT_JSON }}' --package_name '${{ env.ANDROID_PACKAGE_NAME }}' --track 'internal'
 
   web:
-    if: false
     name: Web CI/CD
     needs: code-analysis-and-testing
     runs-on: ubuntu-latest
